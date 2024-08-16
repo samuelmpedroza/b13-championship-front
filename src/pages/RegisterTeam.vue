@@ -3,7 +3,7 @@
     <div class="col-12">
       <card>
         <template slot="header">
-          <h3 class="card-title">Ficha de inscrição para {{ championship.name }}</h3>
+          <h3 class="card-title">Ficha de inscrição para {{ championshipData.name }}</h3>
 
         </template>
         <b-alert variant="danger" :show="showAlert">{{ alertMessage }}</b-alert>
@@ -76,9 +76,6 @@ export default {
         name: '',
         birthdate: ''
       },
-      championship: {
-        name: 'Copa B13'
-      },
       table1: {
         title: "Todos os Campeonatos",
         subTitle: "Listagem de todos os campeonatos em andamento",
@@ -89,11 +86,22 @@ export default {
       alertMessage: '',
       showSuccess: false,
       successMessage: '',
-      championshipId: ''
+      championshipId: '',
+      championshipData: {}
     };
   },
-  mounted() {
+  async mounted() {
     this.championshipId = this.$route.params.id
+    const token = sessionStorage.getItem('token');
+        try {
+          const response = await axios.get(`https://b13-championship-manager.onrender.com/championships/detail/${this.championshipId}`, { validateStatus: () => true, headers: { Authorization: `Bearer ${token}` } });
+          if (response.status === 200) {
+            this.championshipData = response.data.championship
+            this.
+          }
+        } catch(e) {
+          console.log(e)
+        }
   },
   methods: {
     scrollToTop() {
