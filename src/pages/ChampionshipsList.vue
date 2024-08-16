@@ -63,7 +63,7 @@
     async mounted() {
       const token = sessionStorage.getItem('token');
       try {
-        const response = await axios.get('http://localhost:3000/championships', { validateStatus: () => true, headers: { Authorization: `Bearer ${token}` } });
+        const response = await axios.get('https://b13-championship-manager.onrender.com/championships', { validateStatus: () => true, headers: { Authorization: `Bearer ${token}` } });
         if (response.status === 200) {
           this.table1.data = response.data.championships
         }
@@ -80,7 +80,7 @@
       async showModal(index) {
         const token = sessionStorage.getItem('token');
         try {
-          const response = await axios.get(`http://localhost:3000/championships/detail/${this.table1.data[index].id}`, { validateStatus: () => true, headers: { Authorization: `Bearer ${token}` } });
+          const response = await axios.get(`https://b13-championship-manager.onrender.com/championships/detail/${this.table1.data[index].id}`, { validateStatus: () => true, headers: { Authorization: `Bearer ${token}` } });
           if (response.status === 200) {
             this.championshipData = response.data.championship
             this.modalTitle = `Detalhes do campeonato: ${this.championshipData.name}`

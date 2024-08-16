@@ -131,7 +131,7 @@
                   confirmPassword: this.confirmPassword
               }
               try {
-                  const response = await axios.post('http://localhost:3000/auth/signup', data, { validateStatus: () => true });
+                  const response = await axios.post('https://b13-championship-manager.onrender.com/auth/signup', data, { validateStatus: () => true });
                   if (response.status === 201) {
                       this.showSuccess = true;
                       this.showRegister = false;
@@ -150,7 +150,7 @@
                   password: this.password,
               }
               try {
-                  const response = await axios.post('http://localhost:3000/auth/login', data, { validateStatus: () => true });
+                  const response = await axios.post('https://b13-championship-manager.onrender.com/auth/login', data, { validateStatus: () => true });
                   if (response.status === 200) {
                       sessionStorage.setItem('token', response.data.token);
                       this.$nextTick(() => {

@@ -133,7 +133,7 @@ export default {
           name: this.team.name,
           players: this.table1.data
         }
-        const response = await axios.post(`http://localhost:3000/championships/${this.championshipId}/team`, data, { validateStatus: () => true, headers: { Authorization: `Bearer ${token}` } });
+        const response = await axios.post(`https://b13-championship-manager.onrender.com/championships/${this.championshipId}/team`, data, { validateStatus: () => true, headers: { Authorization: `Bearer ${token}` } });
 
         if (response.status === 201) {
           this.successMessage = 'Time registrado com sucesso.'
