@@ -97,7 +97,6 @@ export default {
           const response = await axios.get(`https://b13-championship-manager.onrender.com/championships/detail/${this.championshipId}`, { validateStatus: () => true, headers: { Authorization: `Bearer ${token}` } });
           if (response.status === 200) {
             this.championshipData = response.data.championship
-            this.
           }
         } catch(e) {
           console.log(e)
