@@ -130,6 +130,7 @@ export default {
         this.alertMessage = 'Um time deve ter pelo menos 5 atletas para se inscrever em uma competição.'
         this.showAlert = true
         this.showSuccess = false
+        return
       } else {
         this.showAlert = false
         this.alertMessage = ''
